@@ -56,7 +56,7 @@ final class LastVisit extends CMSPlugin
 
         $db = $this->getDatabase();
         $query = $db->getQuery(true)
-            ->select($db->quoteName('log_date'))
+            ->select($db->quoteName(['log_date', 'message']))
             ->from($db->quoteName('#__action_logs'))
             ->where($db->quoteName('user_id') . ' = :id')
             ->where($db->quoteName('message_language_key') . ' = ' . $db->quote('PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN'))
@@ -67,12 +67,18 @@ final class LastVisit extends CMSPlugin
         try
         {
             $result = $db->loadRowList();
+
         } catch (RuntimeException $e) {
             $app->enqueueMessage($lang->_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
         }
-        
-        $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
 
-        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+        // Check if the last visit login was in the frontend, skip the backend
+        if (in_array('PLG_ACTIONLOG_JOOMLA_APPLICATION_SITE', json_decode($result[1][1], true))) {
+            $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
+            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+
+            // Show the message
+            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+        }
     }
 }
