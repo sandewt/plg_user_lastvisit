@@ -7,7 +7,7 @@
 		<type>plugin</type>
 		<folder></folder>
 		<client>site</client>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 		<infourl title="Reading Bar">https://github.com/sandewt/plg_user_lastvisit</infourl>
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/sandewt/plg_user_lastvisit/archive/master.zip</downloadurl>
