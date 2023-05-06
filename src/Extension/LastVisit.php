@@ -70,7 +70,7 @@ final class LastVisit extends CMSPlugin
         } catch (RuntimeException $e) {
             $app->enqueueMessage($lang->_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
         }
-        
+
         $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
 
         $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
