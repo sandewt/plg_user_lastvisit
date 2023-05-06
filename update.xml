@@ -16,7 +16,7 @@
 			<tag>stable</tag>
 		</tags>
 		<maintainerurl>JG Sanders</maintainerurl>
-		<targetplatform name="joomla" version="4.[3|4]"/>
+		<targetplatform name="joomla" version="4.[34]"/>
 		<php_minimum>7.2.5</php_minimum>
 	</update>
 </updates>
