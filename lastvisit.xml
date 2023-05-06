@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension version="4.3" type="plugin" group="user" method="upgrade">
-	<name>Last Visit - EWT</name>
+	<name>plg_user_lastvisit</name>
 	<author>JG Sanders</author>
 	<creationDate>2023-05</creationDate>
 	<copyright>Copyright (C) 2023 JG Sanders. All rights reserved.</copyright>
