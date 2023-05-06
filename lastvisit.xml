@@ -21,4 +21,7 @@
 		<language tag="en-GB">language/en-GB/plg_user_lastvisit.sys.ini</language>
 	</languages>
 	-->
+	<updateservers>
+		<server type="extension" name="Last Visit Update Site">https://raw.githubusercontent.com/sandewt/plg_user_lastvisit/master/update.xml</server>
+	</updateservers>
 </extension>
