@@ -2,8 +2,6 @@
 
 This plugin shows a message with the last visit date after a login in the frontend.
 
-A login in the backend has no influence.
-
 
 # Configuration / Features
 
