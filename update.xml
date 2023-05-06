@@ -3,7 +3,7 @@
 	<update>
 		<name>Last Visit</name>
 		<description>Plugin LastVisit</description>
-		<element>plg_user_lastvisit</element>
+		<element>lastvisit</element>
 		<type>plugin</type>
 		<folder>user</folder>
 		<client>site</client>
