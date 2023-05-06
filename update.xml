@@ -5,7 +5,7 @@
 		<description>Plugin LastVisit</description>
 		<element>plg_user_lastvisit</element>
 		<type>plugin</type>
-		<folder></folder>
+		<folder>user</folder>
 		<client>site</client>
 		<version>1.0.0</version>
 		<infourl title="Last Visit">https://github.com/sandewt/plg_user_lastvisit</infourl>
