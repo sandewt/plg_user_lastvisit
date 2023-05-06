@@ -2,6 +2,8 @@
 
 This plugin shows a message with the last visit date after a login in the frontend.
 
+A login in the backend has no influence.
+
 
 # Configuration / Features
 
@@ -20,7 +22,7 @@ View last visit date after a login.
 
 ### JOOMLA VERSION ###
 
-* Latest version: 1.0.0 for Joomla 4.3
+* Latest version: 1.0.1 for Joomla 4.3
 * Type: user plugin (site)
 
 
