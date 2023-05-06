@@ -1,6 +1,7 @@
 # Simple Last Visit date plugin for Joomla 4.3
 
 This plugin shows a message with the last visit date after a login in the frontend.
+No distinction is made between logging in earlier in the backend or frontend.
 
 
 # Configuration / Features
