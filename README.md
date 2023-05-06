@@ -12,6 +12,12 @@ This plugin shows in the frontend a message with the last visit date after a log
 - Install and activate (or update) the plugin.
 
 
+### FRONTEND MESSAGE ###
+
+View last visit date after a login.
+
+![Schermafbeelding 2023-05-06 073500](https://user-images.githubusercontent.com/9271775/236602554-cddf9a5a-da93-4c89-8667-2f870ff0b9d8.png)
+
 ### JOOMLA VERSION ###
 
 * Latest version: 1.0.0 for Joomla 4.3
