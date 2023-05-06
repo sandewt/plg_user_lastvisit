@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="4.3" type="plugin" group="user" method="upgrade">
+	<name>plg_user_lastvisit</name>
+	<author>JG Sanders</author>
+	<creationDate>2023-05</creationDate>
+	<copyright>Copyright (C) 2023 JG Sanders. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>Author email</authorEmail>
+	<authorUrl>Auther website</authorUrl>
+	<version>0.0.3</version>
+	<description>PLG_USER_LASTVISIT_XML_DESCRIPTION</description>
+	<namespace path="src">EWT\Plugin\User\LastVisit</namespace>
+	<files>
+		<folder>language</folder>
+		<folder plugin="lastvisit">services</folder>
+		<folder>src</folder>
+	</files>
+	<!--
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_user_lastvisit.ini</language>
+		<language tag="en-GB">language/en-GB/plg_user_lastvisit.sys.ini</language>
+	</languages>
+	-->
+</extension>
