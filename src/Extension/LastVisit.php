@@ -85,7 +85,7 @@ final class LastVisit extends CMSPlugin
         // Show message last visit frontend login
         foreach ($list as $key => $value)
         {
-            // Skip the new inlog date from list
+            // Skip the new visit date from list
             if ($key == 1)
             {
                 $date = HTMLHelper::_('date', $value[0], $lang->_('DATE_FORMAT_LC2'));
