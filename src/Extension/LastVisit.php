@@ -7,7 +7,7 @@
  * @author      JG Sanders
  * @copyright   Copyright (C) 2023 JG Sanders. All rights reserved.
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later        
- */
+ */ 
 
 namespace EWT\Plugin\User\LastVisit\Extension;
 
@@ -56,7 +56,7 @@ final class LastVisit extends CMSPlugin
 
         $db = $this->getDatabase();
         $query = $db->getQuery(true)
-            ->select($db->quoteName('log_date'))
+            ->select($db->quoteName(['log_date', 'message']))
             ->from($db->quoteName('#__action_logs'))
             ->where($db->quoteName('user_id') . ' = :id')
             ->where($db->quoteName('message_language_key') . ' = ' . $db->quote('PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN'))
@@ -71,8 +71,24 @@ final class LastVisit extends CMSPlugin
             $app->enqueueMessage($lang->_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
         }
 
-        $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
+        foreach ($result as $key => $value)
+        {
+            $k = $key;
 
-        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+            // Skip backend login
+            if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR'))
+            {
+                $k = $key - 1;
+                continue;
+            }
+
+            if ($k == 1)
+            {
+                // Show message last visit frontend login
+				$date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
+                $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+                break;
+            }
+        }
     }
 }
