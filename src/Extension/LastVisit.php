@@ -74,7 +74,7 @@ final class LastVisit extends CMSPlugin
 
         $list = [];
 
-        // List the frontend login date
+        // List the users frontend login date
         foreach ($result as $value) {
             // Skip the backend logins
             if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
