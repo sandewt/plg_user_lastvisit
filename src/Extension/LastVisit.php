@@ -71,21 +71,24 @@ final class LastVisit extends CMSPlugin
             $app->enqueueMessage($lang->_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
         }
 
-        foreach ($result as $key => $value)
+        // Skip backend login
+        foreach ($result as $value)
         {
-            $k = $key;
-
-            // Skip backend login
             if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR'))
             {
-                $k = $key - 1;
                 continue;
             }
 
-            if ($k == 1)
+            $list[] = $value;
+        }
+
+        // Show message last visit frontend login
+        foreach ($list as $key => $value)
+        {
+            // Skip the new inlog date from list
+            if ($key == 1)
             {
-                // Show message last visit frontend login
-                $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
+                $date = HTMLHelper::_('date', $value[0], $lang->_('DATE_FORMAT_LC2'));
                 $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
                 break;
             }
