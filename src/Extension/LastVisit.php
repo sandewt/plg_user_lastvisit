@@ -36,7 +36,7 @@ final class LastVisit extends CMSPlugin
     protected $autoloadLanguage = true;
 
     /**
-     * This plugins shows the last visit date
+     * This plugins shows the last visit date in frontend
      *
      * @param   array  $options  Array holding options
      *
@@ -54,6 +54,7 @@ final class LastVisit extends CMSPlugin
             return;
         }
 
+        // Get the user data from the action_logs table
         $db = $this->getDatabase();
         $query = $db->getQuery(true)
             ->select($db->quoteName(['log_date', 'message']))
@@ -71,7 +72,7 @@ final class LastVisit extends CMSPlugin
             $app->enqueueMessage($e->getMessage(), 'error');
         }
  
-        // Skip backend login
+        // Skip the backend logins
         foreach ($result as $value)
         {
             if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR'))
@@ -82,10 +83,10 @@ final class LastVisit extends CMSPlugin
             $list[] = $value;
         }
 
-        // Show message last visit frontend login
+        // Show a message with the last visit date frontend login
         foreach ($list as $key => $value)
         {
-            // Skip the new visit date from list
+            // Ignore the new visit date
             if ($key == 1)
             {
                 $date = HTMLHelper::_('date', $value[0], $lang->_('DATE_FORMAT_LC2'));
