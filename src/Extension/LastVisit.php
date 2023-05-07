@@ -79,7 +79,6 @@ final class LastVisit extends CMSPlugin
             if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
                 continue;
             }
-
             // Unset irrelevant data
             unset($value[1]);
 
