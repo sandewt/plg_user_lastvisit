@@ -89,7 +89,7 @@ final class LastVisit extends CMSPlugin
 
         // Show a message with the last visit date
         foreach ($list as $key => $value) {
-            // Ignore the new visit date
+            // Ignore the new login
             if ($key == 1) {
                 $date = HTMLHelper::_('date', $value[0], $lang->_('DATE_FORMAT_LC2'));
                 $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $date), 'info');
