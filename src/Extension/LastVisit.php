@@ -81,7 +81,7 @@ final class LastVisit extends CMSPlugin
             }
             // Unset irrelevant data
             unset($value[1]);
-
+            // Create list
             $list[] = $value;
         }
 
