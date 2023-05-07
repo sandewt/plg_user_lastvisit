@@ -67,10 +67,10 @@ final class LastVisit extends CMSPlugin
         try
         {
             $result = $db->loadRowList();
-        } catch (RuntimeException $e) {
-            $app->enqueueMessage($lang->_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
+        } catch (\RuntimeException $e) {
+            $app->enqueueMessage($e->getMessage(), 'error');
         }
-
+ 
         // Skip backend login
         foreach ($result as $value)
         {
@@ -89,7 +89,7 @@ final class LastVisit extends CMSPlugin
             if ($key == 1)
             {
                 $date = HTMLHelper::_('date', $value[0], $lang->_('DATE_FORMAT_LC2'));
-                $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+                $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $date), 'info');
                 break;
             }
         }
