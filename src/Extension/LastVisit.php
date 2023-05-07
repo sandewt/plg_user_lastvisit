@@ -85,7 +85,7 @@ final class LastVisit extends CMSPlugin
             if ($k == 1)
             {
                 // Show message last visit frontend login
-				$date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
+                $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
                 $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
                 break;
             }
