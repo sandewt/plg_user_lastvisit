@@ -48,17 +48,17 @@ final class LastVisit extends CMSPlugin
             return;
         }
 
-       $this->getLastVisitDate();
+       $this->showLastVisitDate();
     }
 
     /**
-     * Get the last visit date
+     * Show the last visit date
      *
      * @return  void
      *
      * @since   1.0.0
      */
-    private function getLastVisitDate(): void
+    private function showLastVisitDate(): void
     {
         $app  = $this->getApplication();
         $user = $app->getIdentity();
