@@ -76,7 +76,6 @@ final class LastVisit extends CMSPlugin
         $list = [];
 
         foreach ($result as $value) {
-
             // Skip the backend logins
             if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
                 continue;
