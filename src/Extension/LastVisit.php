@@ -36,23 +36,33 @@ final class LastVisit extends CMSPlugin
     protected $autoloadLanguage = true;
 
     /**
-     * This plugins shows the last visit date in frontend
-     *
-     * @param   array  $options  Array holding options
+     * This plugins shows the last (previous) visit date in frontend
      *
      * @return  void
      *
      * @since   1.0.0
      */
-    public function onUserAfterLogin($options = []): void
+    public function onUserAfterLogin(): void
+    {
+        if (!$this->getApplication()->isClient('site')) {
+            return;
+        }
+
+       $this->getLastVisitDate();
+    }
+
+    /**
+     * Get the last visit date
+     *
+     * @return  void
+     *
+     * @since   1.0.0
+     */
+    private function getLastVisitDate(): void
     {
         $app  = $this->getApplication();
         $user = $app->getIdentity();
         $lang = $app->getLanguage();
-
-        if (!$app->isClient('site') && !$user->guest) {
-            return;
-        }
 
         // Get the user data from the action_logs table
         $db = $this->getDatabase();
@@ -96,6 +106,6 @@ final class LastVisit extends CMSPlugin
 
         // Show a message with the last visit date
         $lastvisit = HTMLHelper::_('date', $date, $lang->_('DATE_FORMAT_LC2'));
-        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');
+        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');        
     }
 }
