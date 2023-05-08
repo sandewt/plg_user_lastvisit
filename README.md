@@ -22,6 +22,8 @@ View last visit date after a login.
 
 ![Schermafbeelding 2023-05-07 153312](https://user-images.githubusercontent.com/9271775/236680704-55976f9e-4a33-4986-a7b5-39b6f5e3dc62.png)
 
+The text can be changed with a language override, eg: "Last activity: ...."
+
 ### JOOMLA VERSION ###
 
 * Latest version: 1.0.1 for Joomla 4.3
