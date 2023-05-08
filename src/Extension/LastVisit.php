@@ -6,8 +6,8 @@
  *
  * @author      JG Sanders
  * @copyright   Copyright (C) 2023 JG Sanders. All rights reserved.
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later        
- */ 
+ * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
+ */
 
 namespace EWT\Plugin\User\LastVisit\Extension;
 
@@ -36,27 +36,38 @@ final class LastVisit extends CMSPlugin
     protected $autoloadLanguage = true;
 
     /**
-     * This plugins shows the last visit date
-     *
-     * @param   array  $options  Array holding options
+     * This plugins shows the last (previous) visit date after a login in the frontend.
      *
      * @return  void
      *
      * @since   1.0.0
      */
-    public function onUserAfterLogin($options = []): void
+    public function onUserAfterLogin(): void
+    {
+        if (!$this->getApplication()->isClient('site')) {
+            return;
+        }
+
+       $this->showLastVisitDate();
+    }
+
+    /**
+     * Show the last visit date
+     *
+     * @return  void
+     *
+     * @since   1.0.0
+     */
+    private function showLastVisitDate(): void
     {
         $app  = $this->getApplication();
         $user = $app->getIdentity();
         $lang = $app->getLanguage();
 
-        if (!$app->isClient('site') && !$user->guest) {
-            return;
-        }
-
+        // Get the user data from the action_logs table
         $db = $this->getDatabase();
         $query = $db->getQuery(true)
-            ->select($db->quoteName('log_date'))
+            ->select($db->quoteName(['log_date', 'message']))
             ->from($db->quoteName('#__action_logs'))
             ->where($db->quoteName('user_id') . ' = :id')
             ->where($db->quoteName('message_language_key') . ' = ' . $db->quote('PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN'))
@@ -67,12 +78,34 @@ final class LastVisit extends CMSPlugin
         try
         {
             $result = $db->loadRowList();
-        } catch (RuntimeException $e) {
-            $app->enqueueMessage($lang->_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
+        } catch (\RuntimeException $e) {
+            $app->enqueueMessage($e->getMessage(), 'error');
         }
-        
-        $date = HTMLHelper::_('date', $result[1][0], $lang->_('DATE_FORMAT_LC2'));
 
-        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_DATE'), $date), 'info');
+        // List the user frontend login date
+        $list = [];
+
+        foreach ($result as $value) {
+            // Skip the backend logins
+            if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
+                continue;
+            }
+
+            // Skip irrelevant data
+            unset($value[1]);
+
+            // Set the date in a list
+            $list[] = $value;
+
+            // Get the last visit date
+            if (count($list) == 2) {
+                $date = $list[1][0];
+                break;
+            }
+        }
+
+        // Show a message with the last visit date
+        $lastvisit = HTMLHelper::_('date', $date, $lang->_('DATE_FORMAT_LC2'));
+        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');        
     }
 }

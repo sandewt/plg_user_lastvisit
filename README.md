@@ -1,6 +1,10 @@
-# Simple Last Visit date plugin for Joomla 4.3
+# Show last (previous) visit date plugin
 
-This plugin shows in the frontend a message with the last visit date after a login.
+*This plugin shows a message with the last visit date after a login in the frontend.*
+
+The last visit date in the meaning of previous visitors date.
+
+Note: Joomla talks about the last visited date on a new login.
 
 
 # Configuration / Features
@@ -16,11 +20,13 @@ This plugin shows in the frontend a message with the last visit date after a log
 
 View last visit date after a login.
 
-![Schermafbeelding 2023-05-06 073500](https://user-images.githubusercontent.com/9271775/236602554-cddf9a5a-da93-4c89-8667-2f870ff0b9d8.png)
+![Schermafbeelding 2023-05-07 153312](https://user-images.githubusercontent.com/9271775/236680704-55976f9e-4a33-4986-a7b5-39b6f5e3dc62.png)
+
+The text can be changed with a language override, eg: "Last activity: ...."
 
 ### JOOMLA VERSION ###
 
-* Latest version: 1.0.0 for Joomla 4.3
+* Latest version: 1.0.1 for Joomla 4.3
 * Type: user plugin (site)
 
 
