@@ -36,7 +36,7 @@ final class LastVisit extends CMSPlugin
     protected $autoloadLanguage = true;
 
     /**
-     * This plugins shows the last (previous) visit date after a login in the frontend
+     * This plugins shows the last (previous) visit date after a login in the frontend.
      *
      * @return  void
      *
