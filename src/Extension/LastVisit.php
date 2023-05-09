@@ -80,7 +80,7 @@ final class LastVisit extends CMSPlugin
         {
             $result = $db->loadRowList();
         } catch (\RuntimeException $e) {
-            $app->enqueueMessage($e->getMessage(), 'error');
+            // Ignore it
         }
 
         // List the user frontend login date
