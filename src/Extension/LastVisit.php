@@ -15,6 +15,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\ParameterType;
+use RuntimeException;
 
 defined('_JEXEC') or die;
 
@@ -79,7 +80,7 @@ final class LastVisit extends CMSPlugin
         {
             $result = $db->loadRowList();
         } catch (\RuntimeException $e) {
-            $app->enqueueMessage($e->getMessage(), 'error');
+            // Ignore it
         }
 
         // List the user frontend login date

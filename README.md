@@ -20,7 +20,7 @@ Note: Joomla talks about the last visited date on a new login.
 
 View last visit date after a login.
 
-![Schermafbeelding 2023-05-07 153312](https://user-images.githubusercontent.com/9271775/236680704-55976f9e-4a33-4986-a7b5-39b6f5e3dc62.png)
+![Schermafbeelding 2023-05-11 135848](https://github.com/sandewt/plg_user_lastvisit/assets/9271775/f731b2ff-36d3-4825-a827-4cc71ac5e888)
 
 The text can be changed with a language override, eg: "Last activity: ...."
 
