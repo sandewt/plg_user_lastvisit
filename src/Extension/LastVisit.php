@@ -29,14 +29,6 @@ final class LastVisit extends CMSPlugin
     use DatabaseAwareTrait;
 
     /**
-     * Load the language file on instantiation.
-     *
-     * @var    boolean
-     * @since  1.0.0
-     */
-    protected $autoloadLanguage = true;
-
-    /**
      * This plugins shows the last (previous) visit date after a login in the frontend.
      *
      * @return  void
