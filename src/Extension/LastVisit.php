@@ -49,7 +49,11 @@ final class LastVisit extends CMSPlugin
             return;
         }
 
-       $this->showLastVisitDate();
+        // Load plugin language files only when needed
+        $this->loadLanguage();
+
+        // Load the last visit date
+        $this->showLastVisitDate();
     }
 
     /**
