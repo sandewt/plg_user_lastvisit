@@ -15,7 +15,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\ParameterType;
-use RuntimeException;
 
 defined('_JEXEC') or die;
 
@@ -27,14 +26,6 @@ defined('_JEXEC') or die;
 final class LastVisit extends CMSPlugin
 {
     use DatabaseAwareTrait;
-
-    /**
-     * Load the language file on instantiation.
-     *
-     * @var    boolean
-     * @since  1.0.0
-     */
-    protected $autoloadLanguage = true;
 
     /**
      * This plugins shows the last (previous) visit date after a login in the frontend.
@@ -49,7 +40,11 @@ final class LastVisit extends CMSPlugin
             return;
         }
 
-       $this->showLastVisitDate();
+        // Load plugin language files only when needed
+        $this->loadLanguage();
+
+        // Load the last visit date
+        $this->showLastVisitDate();
     }
 
     /**
@@ -106,7 +101,9 @@ final class LastVisit extends CMSPlugin
         }
 
         // Show a message with the last visit date
-        $lastvisit = HTMLHelper::_('date', $date, $lang->_('DATE_FORMAT_LC2'));
-        $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');        
+        if (!empty($date)) {
+            $lastvisit = HTMLHelper::_('date', $date, $lang->_('DATE_FORMAT_LC2'));
+            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info'); 
+        }
     }
 }
