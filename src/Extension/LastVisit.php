@@ -16,7 +16,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\ParameterType;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 /**
  * LastVisit plugin class.
