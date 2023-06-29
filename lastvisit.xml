@@ -2,12 +2,12 @@
 <extension version="4.3" type="plugin" group="user" method="upgrade">
 	<name>plg_user_lastvisit</name>
 	<author>JG Sanders</author>
-	<creationDate>2023-05</creationDate>
+	<creationDate>2023-06</creationDate>
 	<copyright>Copyright (C) 2023 JG Sanders. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>Author email</authorEmail>
 	<authorUrl>Auther website</authorUrl>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<description>PLG_USER_LASTVISIT_XML_DESCRIPTION</description>
 	<namespace path="src">EWT\Plugin\User\LastVisit</namespace>
 	<files>
