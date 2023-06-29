@@ -15,8 +15,11 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\ParameterType;
+use RuntimeException;
 
-\defined('_JEXEC') or die;
+use function defined;
+
+defined('_JEXEC') or die;
 
 /**
  * LastVisit plugin class.
@@ -74,29 +77,31 @@ final class LastVisit extends CMSPlugin
         try
         {
             $result = $db->loadRowList();
-        } catch (\RuntimeException $e) {
+        } catch (RuntimeException) {
             // Ignore it
         }
 
         // List the user frontend login date
         $list = [];
 
-        foreach ($result as $value) {
-            // Skip the backend logins
-            if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
-                continue;
-            }
+        if (!empty($result)) {
+            foreach ($result as $value) {
+                // Skip the backend logins
+                if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
+                    continue;
+                }
 
-            // Skip irrelevant data
-            unset($value[1]);
+                // Skip irrelevant data
+                unset($value[1]);
 
-            // Set the date in a list
-            $list[] = $value;
+                // Set the date in a list
+                $list[] = $value;
 
-            // Get the last visit date
-            if (count($list) == 2) {
-                $date = $list[1][0];
-                break;
+                // Get the last visit date
+                if (count($list) == 2) {
+                    $date = $list[1][0];
+                    break;
+                }
             }
         }
 
