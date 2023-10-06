@@ -28,7 +28,7 @@ final class LastVisit extends CMSPlugin
     use DatabaseAwareTrait;
 
     /**
-     * This plugins shows the last (previous) visit date after a login in the frontend.
+     * This plugin shows the last (previous) visit date after a login in the frontend.
      *
      * @return  void
      *
