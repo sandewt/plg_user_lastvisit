@@ -61,7 +61,7 @@ final class LastVisit extends CMSPlugin
         $lang = $app->getLanguage();
 
         // Get the user data from the action_logs table
-        $db = $this->getDatabase();
+        $db    = $this->getDatabase();
         $query = $db->getQuery(true)
             ->select($db->quoteName(['log_date', 'message']))
             ->from($db->quoteName('#__action_logs'))
@@ -71,8 +71,7 @@ final class LastVisit extends CMSPlugin
             ->bind(':id', $user->id, ParameterType::INTEGER);
         $db->setQuery($query);
 
-        try
-        {
+        try {
             $result = $db->loadRowList();
         } catch (\RuntimeException) {
             // Ignore it
@@ -87,13 +86,13 @@ final class LastVisit extends CMSPlugin
                 if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
                     continue;
                 }
-    
+
                 // Skip irrelevant data
                 unset($value[1]);
-    
+
                 // Set the date in a list
                 $list[] = $value;
-    
+
                 // Get the last visit date
                 if (count($list) == 2) {
                     $date = $list[1][0];
@@ -105,7 +104,7 @@ final class LastVisit extends CMSPlugin
         // Show a message with the last visit date
         if (!empty($date)) {
             $lastvisit = HTMLHelper::_('date', $date, $lang->_('DATE_FORMAT_LC2'));
-            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info'); 
+            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');
         }
     }
 }
