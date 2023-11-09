@@ -13,6 +13,7 @@ namespace EWT\Plugin\User\LastVisit\Extension;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\ParameterType;
 
@@ -37,6 +38,10 @@ final class LastVisit extends CMSPlugin
     public function onUserAfterLogin(): void
     {
         if (!$this->getApplication()->isClient('site')) {
+            return;
+        }
+
+        if (!PluginHelper::isEnabled('actionlog', 'joomla')) {
             return;
         }
 
