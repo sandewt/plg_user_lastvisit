@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>Author email</authorEmail>
 	<authorUrl>Auther website</authorUrl>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<description>PLG_USER_LASTVISIT_XML_DESCRIPTION</description>
 	<namespace path="src">EWT\Plugin\User\LastVisit</namespace>
 	<files>
