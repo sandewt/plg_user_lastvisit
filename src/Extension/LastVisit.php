@@ -68,47 +68,23 @@ final class LastVisit extends CMSPlugin
         // Get the user data from the action_logs table
         $db    = $this->getDatabase();
         $query = $db->getQuery(true)
-            ->select($db->quoteName(['log_date', 'message']))
+            ->select($db->quoteName('log_date'))
             ->from($db->quoteName('#__action_logs'))
             ->where($db->quoteName('user_id') . ' = :id')
             ->where($db->quoteName('message_language_key') . ' = ' . $db->quote('PLG_ACTIONLOG_JOOMLA_USER_LOGGED_IN'))
             ->order($db->quoteName('log_date') . ' DESC')
             ->bind(':id', $user->id, ParameterType::INTEGER);
-        $db->setQuery($query);
+        $db->setQuery($query, 1, 1);
 
         try {
-            $result = $db->loadRowList();
+            $result = $db->loadObject();
         } catch (\RuntimeException) {
             // Ignore it
         }
 
-        // List the user frontend login date
-        $list = [];
-
-        if (!empty($result)) {
-            foreach ($result as $value) {
-                // Skip the backend logins
-                if (strpos($value[1], 'PLG_ACTIONLOG_JOOMLA_APPLICATION_ADMINISTRATOR')) {
-                    continue;
-                }
-
-                // Skip irrelevant data
-                unset($value[1]);
-
-                // Set the date in a list
-                $list[] = $value;
-
-                // Get the last visit date
-                if (count($list) == 2) {
-                    $date = $list[1][0];
-                    break;
-                }
-            }
-        }
-
         // Show a message with the last visit date
-        if (!empty($date)) {
-            $lastvisit = HTMLHelper::_('date', $date, $lang->_('DATE_FORMAT_LC2'));
+        if (!empty($result->log_date)) {
+            $lastvisit = HTMLHelper::_('date', $result->log_date, $lang->_('DATE_FORMAT_LC2'));
             $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');
         }
     }
