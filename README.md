@@ -26,7 +26,7 @@ The text can be changed with a language override, eg: "Last activity: ...."
 
 ### JOOMLA VERSION ###
 
-* Latest version: 1.0.8 for Joomla 4.x
+* Latest version: 1.0.9 for Joomla 4.x and Joomla 5.x
 * Type: user plugin (site)
 
 
