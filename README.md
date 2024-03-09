@@ -4,7 +4,7 @@
 
 The last visit date in the meaning of previous visitors date.
 
-Note: Joomla talks about the last visited date on a new login.
+Note: Joomla talks about the last visited date on a new login. That's something different.
 
 
 # Configuration / Features
@@ -14,6 +14,8 @@ Note: Joomla talks about the last visited date on a new login.
 - Download: https://github.com/sandewt/plg_user_lastvisit/releases
 
 - Install and activate (or update) the plugin.
+
+- Note: The Action Log - Joomla plugin should be enabled.
 
 
 ### FRONTEND MESSAGE ###
@@ -26,7 +28,7 @@ The text can be changed with a language override, eg: "Last activity: ...."
 
 ### JOOMLA VERSION ###
 
-* Latest version: 1.0.9 for Joomla 4.x and Joomla 5.x
+* Latest version: 1.0.10 for Joomla 4.x and 5.x
 * Type: user plugin (site)
 
 
