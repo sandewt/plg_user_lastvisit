@@ -12,7 +12,7 @@
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/sandewt/plg_user_lastvisit/archive/master.zip</downloadurl>
 		</downloads>
-		<sha512></sha512>
+		<sha256>8afa410da8e4e5d90057e70a926e185479d6613e8aff62a6cd2f185bf3805358</sha256>
 		<tags>
 			<tag>stable</tag>
 		</tags>
