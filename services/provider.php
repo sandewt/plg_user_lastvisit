@@ -9,7 +9,7 @@
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use EWT\Plugin\User\LastVisit\Extension\LastVisit;
 use Joomla\CMS\Extension\PluginInterface;
@@ -18,7 +18,6 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Database\DatabaseInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use Joomla\Event\DispatcherInterface;
 
 return new class () implements ServiceProviderInterface {
     /**
@@ -35,9 +34,7 @@ return new class () implements ServiceProviderInterface {
         $container->set(
             PluginInterface::class,
             function (Container $container) {
-                $dispatcher = $container->get(DispatcherInterface::class);
-                $plugin     = new LastVisit(
-                    $dispatcher,
+                $plugin = new LastVisit(
                     (array) PluginHelper::getPlugin('user', 'lastvisit')
                 );
                 $plugin->setApplication(Factory::getApplication());
