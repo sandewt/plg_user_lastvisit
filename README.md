@@ -19,10 +19,11 @@ Note: more accurate would be the previous login date instead of the last login d
 ### FRONTEND MESSAGE ###
 
 View of the last login date after a login.
-
-![Schermafbeelding 2023-05-11 135848](https://github.com/sandewt/plg_user_lastvisit/assets/9271775/f731b2ff-36d3-4825-a827-4cc71ac5e888)
-
 The text can be changed with a language override, eg: "Last activity: ...."
+
+<img width="1297" height="417" alt="Schermafbeelding 2026-01-06 111055" src="https://github.com/user-attachments/assets/479d26b3-8f69-42fd-8bc1-bbc7104c439d" />
+
+
 
 ### JOOMLA VERSION ###
 
