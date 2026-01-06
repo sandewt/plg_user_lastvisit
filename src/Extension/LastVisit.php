@@ -85,7 +85,7 @@ final class LastVisit extends CMSPlugin
         // Show a message with the last visit date
         if (!empty($result->log_date)) {
             $lastvisit = HTMLHelper::_('date', $result->log_date, $lang->_('DATE_FORMAT_LC2'));
-            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'info');
+            $app->enqueueMessage(sprintf($lang->_('PLG_USER_LASTVISIT_SHOWDATE'), $lastvisit), 'message');
         }
     }
 }
