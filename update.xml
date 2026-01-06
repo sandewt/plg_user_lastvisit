@@ -13,7 +13,7 @@
 			<downloadurl type="full" format="zip">https://github.com/sandewt/plg_user_lastvisit/releases/download/v.1.1.0/plg_user_lastvisit.zip</downloadurl>
 		</downloads>
 		<sha256>
-			50ad04510faac68128844f26a787eb41fba2ec7e82cb9d5bfb6fdba61e837236
+			152c741e7d56a7469f5bb11aab93bd0da1f6b78b49885fdef7e662db59d12be7
 		</sha256>
 		<tags>
 			<tag>stable</tag>
