@@ -16,6 +16,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\ParameterType;
+use Joomla\Event\SubscriberInterface;
 
 \defined('_JEXEC') or die;
 
@@ -24,9 +25,23 @@ use Joomla\Database\ParameterType;
  *
  * @since  1.0.0
  */
-final class LastVisit extends CMSPlugin
+final class LastVisit extends CMSPlugin implements SubscriberInterface
 {
     use DatabaseAwareTrait;
+
+    /**
+     * Returns an array of events this subscriber will listen to.
+     *
+     * @return  array
+     *
+     * @since   1.0.0
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onUserAfterLogin' => 'onUserAfterLogin',
+        ];
+    }
 
     /**
      * This plugin shows the last (previous) visit date after a login in the frontend.
